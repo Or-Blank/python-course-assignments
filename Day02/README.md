@@ -16,4 +16,10 @@ C1 = 2 M, **V1 = X ml** (what we are looking for), C2 = 0.5 M, V2 = 100 mL
 * For this example, in my calculator, we will choose option #2 in order to find V1 (by filling the inputs of C1, C2 and V2).
 
 ## AI: ##
+I used ChatGPT for this week assignments - an installed app, so no avaliable link.
 
+The prompts I used:
+* "Help me with dailution calculator script i started, fix the ifs and help me hwo to includ inputs, floats and other basic python needed functions"
+* "What is the meaning of the print(f"\nV2 = {V2}") lines?"
+* "What is the inputs functions you added and theire meaning"
+* "Why it is not printing the error print messege when i put 0 in V1 for example?"
