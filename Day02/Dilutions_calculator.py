@@ -31,7 +31,7 @@ elif choice == "2":
     else:
         V1 = (C2 * V2) / C1
         print(f"\nV1 = {V1}")
-        print("This means that the initial volume of your solution is", V1, "volume units.")
+        print("This means that the initial volume of your solution is", V1, "Volume units.")
 
 elif choice == "3":
     C1 = float(input("Enter C1: "))
@@ -53,4 +53,4 @@ elif choice == "4":
     else:
         V2 = (C1 * V1) / C2
         print(f"\nV2 = {V2}")
-        print("This means that the final volume of your solution is", V2, "volume units.")
+        print("This means that the final volume of your solution is", V2, "Volume units.")
