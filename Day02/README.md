@@ -7,7 +7,7 @@
 ## Example: ##
 You want to prepare **100 mL** of a **0.5 M NaCl** solution from a **2 M stock**
 
-C1 = 2 M, **V1= X ml** (what we are looking for), C2= 0.5 M, V2 = 100 mL
+C1 = 2 M, **V1 = X ml** (what we are looking for), C2 = 0.5 M, V2 = 100 mL
 
 2 x X = 0.5 x 100
 
