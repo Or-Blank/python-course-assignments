@@ -1,7 +1,7 @@
 import math
 print("--------------------------------------------------")
 print("Dilution Calculator (C1 * V1 = C2 * V2)")
-print("Keep in mind: All the factors must be in the same units! (Concentration: Molarity, Volume: mL or L)")
+print("Keep in mind: All the factors must be in the same units! (Concentration: Molarity, Volume: uL, mL, etc.)")
 print("--------------------------------------------------")
 print("Hello, Which variable would you like to calculate today?")
 print("1 = C1 (Initial concentration)")
@@ -20,6 +20,7 @@ if choice == "1":
     else:
         C1 = (C2 * V2) / V1
         print(f"\nC1 = {C1}")
+        print("This means that the initial concentration of your solution is", C1, "Molarity.")
 
 elif choice == "2":
     C1 = float(input("Enter C1: "))
@@ -30,6 +31,7 @@ elif choice == "2":
     else:
         V1 = (C2 * V2) / C1
         print(f"\nV1 = {V1}")
+        print("This means that the initial volume of your solution is", V1, "units.")
 
 elif choice == "3":
     C1 = float(input("Enter C1: "))
@@ -40,6 +42,7 @@ elif choice == "3":
     else:
         C2 = (C1 * V1) / V2
         print(f"\nC2 = {C2}")
+        print("This means that the final concentration of your solution is", C2, "Molarity.")
 
 elif choice == "4":
     C1 = float(input("Enter C1: "))
@@ -50,3 +53,4 @@ elif choice == "4":
     else:
         V2 = (C1 * V1) / C2
         print(f"\nV2 = {V2}")
+        print("This means that the final volume of your solution is", V2, "units.")
