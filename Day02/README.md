@@ -13,4 +13,7 @@ C1 = 2 M, **V1 = X ml** (what we are looking for), C2 = 0.5 M, V2 = 100 mL
 
 **X = 25 mL**
 
+* For this example, in my calculator, we will choose option #2 in order to find V1 (by filling the inputs of C1, C2 and V2).
+
 ## AI: ##
+
