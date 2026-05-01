@@ -3,12 +3,14 @@ from dilution_lib import Calculation_of_C1, Calculation_of_V1, Calculation_of_C2
 
 def main():
     if len(sys.argv) < 5:
-        print("Usage: python Dilutions_calculator_cli.py <choice> <val1> <val2> <val3>")
+        print("Dilutions Calculator")
+        print("C1 * V1 = C2 * V2")
         print("Choices:")
         print("1: Calculate C1 - args: V1 C2 V2")
         print("2: Calculate V1 - args: C1 C2 V2")
         print("3: Calculate C2 - args: C1 V1 V2")
         print("4: Calculate V2 - args: C1 V1 C2")
+        print("In order to use, type: python Dilutions_calculator_cli.py <choice> <val1> <val2> <val3>")
         return
 
     choice = sys.argv[1]
