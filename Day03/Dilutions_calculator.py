@@ -1,5 +1,5 @@
 # Import all the calculation from the library file instead of them being here
-from dilution_lib import Calculate_C1, Calculate_V1, Calculate_C2, Calculate_V2, Calculation_of_C1, Calculation_of_C2, Calculation_of_V1, Calculation_of_V2
+from dilution_lib import Calculation_of_C1, Calculation_of_V1, Calculation_of_C2, Calculation_of_V2
 
 # Now this is the main function to run the program of the above sub defs
 def main():
