@@ -71,3 +71,6 @@ def main():
         V2 = Calculate_V2(C1, V1, C2)
         print(f"\nV2 = {V2}")
         print("This means that the final volume of your solution is", V2, "Volume units.")
+
+if __name__ == "__main__":
+    main()
