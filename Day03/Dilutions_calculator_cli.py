@@ -2,7 +2,6 @@ import sys
 from dilution_lib import Calculation_of_C1, Calculation_of_V1, Calculation_of_C2, Calculation_of_V2
 
 def main():
-    print("Loading?")
     if len(sys.argv) < 5:
         print("Usage: python Dilutions_calculator_cli.py <choice> <val1> <val2> <val3>")
         print("Choices:")
