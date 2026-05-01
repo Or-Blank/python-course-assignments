@@ -1,30 +1,5 @@
-def Calculate_C1 (C2, V2, V1):
-    if V1 == 0:
-        print("Error: V1 cannot be zero, run again.")
-    else:
-        C1 = (C2 * V2) / V1
-        return C1
-
-def Calculate_V1 (C1, C2, V2):
-    if C1 == 0:
-        print("Error: C1 cannot be zero, run again.")
-    else:
-        V1 = (C2 * V2) / C1
-        return V1
-
-def Calculate_C2 (C1, V1, V2):
-    if V2 == 0:
-        print("Error: V2 cannot be zero, run again.")
-    else:
-        C2 = (C1 * V1) / V2
-        return C2
-    
-def Calculate_V2 (C1, V1, C2):
-    if C2 == 0:
-        print("Error: C2 cannot be zero, run again.")
-    else:
-        V2 = (C1 * V1) / C2
-        return V2
+# Import all the calculation from the library file instead of them being here
+from dilution_lib import Calculate_C1, Calculate_V1, Calculate_C2, Calculate_V2, Calculation_of_C1, Calculation_of_C2, Calculation_of_V1, Calculation_of_V2
 
 # Now this is the main function to run the program of the above sub defs
 def main():
@@ -44,7 +19,7 @@ def main():
         V1 = float(input("Enter V1: "))
         C2 = float(input("Enter C2: "))
         V2 = float(input("Enter V2: "))
-        C1 = Calculate_C1(C2, V2, V1)
+        C1 = Calculation_of_C1(C2, V2, V1)
         if C1 is not None:
             print(f"\nC1 = {C1}")
             print("This means that the initial concentration of your solution is", C1, "Molarity units.")
@@ -55,7 +30,7 @@ def main():
         C1 = float(input("Enter C1: "))
         C2 = float(input("Enter C2: "))
         V2 = float(input("Enter V2: "))
-        V1 = Calculate_V1(C1, C2, V2)
+        V1 = Calculation_of_V1(C1, C2, V2)
         if V1 is not None:
             print(f"\nV1 = {V1}")
             print("This means that the initial volume of your solution is", V1, "volume units.")
@@ -66,7 +41,7 @@ def main():
         C1 = float(input("Enter C1: "))
         V1 = float(input("Enter V1: "))
         V2 = float(input("Enter V2: "))
-        C2 = Calculate_C2(C1, V1, V2)
+        C2 = Calculation_of_C2(C1, V1, V2)
         if C2 is not None:
             print(f"\nC2 = {C2}")
             print("This means that the final concentration of your solution is", C2, "Molarity units.")
@@ -77,7 +52,7 @@ def main():
         C1 = float(input("Enter C1: "))
         V1 = float(input("Enter V1: "))
         C2 = float(input("Enter C2: "))
-        V2 = Calculate_V2(C1, V1, C2)
+        V2 = Calculation_of_V2(C1, V1, C2)
         if V2 is not None:
             print(f"\nV2 = {V2}")
             print("This means that the final volume of your solution is", V2, "Volume units.")
