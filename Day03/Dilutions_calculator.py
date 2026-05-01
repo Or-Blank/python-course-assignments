@@ -45,32 +45,44 @@ def main():
         C2 = float(input("Enter C2: "))
         V2 = float(input("Enter V2: "))
         C1 = Calculate_C1(C2, V2, V1)
-        print(f"\nC1 = {C1}")
-        print("This means that the initial concentration of your solution is", C1, "Molarity units.")
+        if C1 is not None:
+            print(f"\nC1 = {C1}")
+            print("This means that the initial concentration of your solution is", C1, "Molarity units.")
+        else:
+            return
         
     elif choice == "2":
         C1 = float(input("Enter C1: "))
         C2 = float(input("Enter C2: "))
         V2 = float(input("Enter V2: "))
         V1 = Calculate_V1(C1, C2, V2)
-        print(f"\nV1 = {V1}")
-        print("This means that the initial volume of your solution is", V1, "volume units.")
+        if V1 is not None:
+            print(f"\nV1 = {V1}")
+            print("This means that the initial volume of your solution is", V1, "volume units.")
+        else:
+            return
         
     elif choice == "3":
         C1 = float(input("Enter C1: "))
         V1 = float(input("Enter V1: "))
         V2 = float(input("Enter V2: "))
         C2 = Calculate_C2(C1, V1, V2)
-        print(f"\nC2 = {C2}")
-        print("This means that the final concentration of your solution is", C2, "Molarity units.")
+        if C2 is not None:
+            print(f"\nC2 = {C2}")
+            print("This means that the final concentration of your solution is", C2, "Molarity units.")
+        else:
+            return
         
     elif choice == "4":
         C1 = float(input("Enter C1: "))
         V1 = float(input("Enter V1: "))
         C2 = float(input("Enter C2: "))
         V2 = Calculate_V2(C1, V1, C2)
-        print(f"\nV2 = {V2}")
-        print("This means that the final volume of your solution is", V2, "Volume units.")
+        if V2 is not None:
+            print(f"\nV2 = {V2}")
+            print("This means that the final volume of your solution is", V2, "Volume units.")
+        else:
+            return
 
 if __name__ == "__main__":
     main()
