@@ -6,10 +6,14 @@
   
 ## Files: ##
 dilution_lib.py - contains the core calculations.
-Dilutions_calculator_input.py - the code that uses standard input with input(). and imports the calculations from the library.
-Dilutions_calculator_cli.py - the code that uses command line arguments with sys.argv.
-Dilutions_calculator_gui.py - the code that uses gui version with tkinter.
-test_dilution_lib.py - code that test the calculations if they are working.
+
+**Dilutions_calculator_input.py** - the code that uses standard input with input(). and imports the calculations from the library.
+
+**Dilutions_calculator_cli.py** - the code that uses command line arguments with sys.argv.
+
+**Dilutions_calculator_gui.py** - the code that uses gui version with tkinter.
+
+**test_dilution_lib.py** - code that test the calculations if they are working.
 
 ## AI: ##
 I used for this week task the built in Copilot of VS:
