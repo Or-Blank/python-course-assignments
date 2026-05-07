@@ -110,7 +110,6 @@ class DilutionCalculatorGUI:
             return
 
         try:
-            # ---------- C1 ----------
             if choice == "1":
                 V1_raw, C2_raw, V2_raw = val1, val2, val3
                 V1_L = convert_volume_to_L(V1_raw, vol_unit)
@@ -122,7 +121,6 @@ class DilutionCalculatorGUI:
                     text=f"C1 = {C1:.6g} {conc_unit}\nInitial concentration."
                 )
 
-            # ---------- V1 + solvent ----------
             elif choice == "2":
                 C1_raw, C2_raw, V2_raw = val1, val2, val3
                 V2_L = convert_volume_to_L(V2_raw, vol_unit)
@@ -141,7 +139,6 @@ class DilutionCalculatorGUI:
                     )
                 )
 
-            # ---------- C2 ----------
             elif choice == "3":
                 C1_raw, V1_raw, V2_raw = val1, val2, val3
                 V1_L = convert_volume_to_L(V1_raw, vol_unit)
@@ -153,7 +150,6 @@ class DilutionCalculatorGUI:
                     text=f"C2 = {C2:.6g} {conc_unit}\nFinal concentration."
                 )
 
-            # ---------- V2 ----------
             elif choice == "4":
                 C1_raw, V1_raw, C2_raw = val1, val2, val3
                 V1_L = convert_volume_to_L(V1_raw, vol_unit)
