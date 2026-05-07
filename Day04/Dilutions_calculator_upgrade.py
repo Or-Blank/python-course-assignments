@@ -72,12 +72,12 @@ class DilutionCalculatorGUI:
 
         instructions_text = (
             "Instructions:\n"
-            "• For C1: enter V1, C2, V2\n"
-            "• For V1: enter C1, C2, V2\n"
-            "• For C2: enter C1, V1, V2\n"
-            "• For V2: enter C1, V1, C2\n\n"
-            "Use the dropdowns to choose units.\n"
-            "All concentrations must use the same unit, and all volumes must use the same unit.\n"
+            "• For C1: enter Value 1 (V1), Value 2 (C2), Value 3 (V2)\n"
+            "• For V1: enter Value 1 (C1), Value 2 (C2), Value 3 (V2)\n"
+            "• For C2: enter Value 1 (C1), Value 2 (V1), Value 3 (V2)\n"
+            "• For V2: enter Value 1 (C1), Value 2 (V1), Value 3 (C2)\n\n"
+            
+            "All concentrations must use the same unit.\n" "All volumes must use the same unit.\n"
         )
 
         instructions = ctk.CTkTextbox(main_frame, width=440, height=170, corner_radius=10)
