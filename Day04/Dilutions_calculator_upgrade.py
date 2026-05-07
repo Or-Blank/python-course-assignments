@@ -153,7 +153,7 @@ class DilutionCalculatorGUI:
                     text=f"C2 = {C2:.6g} {conc_unit}\nFinal concentration."
                 )
 
-            # ---------- V2 + solvent ----------
+            # ---------- V2 ----------
             elif choice == "4":
                 C1_raw, V1_raw, C2_raw = val1, val2, val3
                 V1_L = convert_volume_to_L(V1_raw, vol_unit)
