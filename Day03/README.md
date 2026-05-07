@@ -15,6 +15,9 @@ dilution_lib.py - contains the core calculations.
 
 **test_dilution_lib.py** - code that test the calculations if they are working.
 
+## Requirements: ##
+* Make sure the desired runing files (input, cli or gui) are in the same folder as dilution_lib.py
+
 ## AI: ##
 I used for this week task the built in Copilot of VS:
 * "How to create and organize a code under the def function?"
