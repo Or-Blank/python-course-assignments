@@ -3,6 +3,6 @@
   
 
 ## AI: ##
-
+problem with customtkinter import
 
 
