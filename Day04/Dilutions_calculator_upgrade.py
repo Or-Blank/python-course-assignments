@@ -3,25 +3,7 @@
 
 import customtkinter as ctk
 from tkinter import messagebox
-from dilution_lib import (Calculation_of_C1, Calculation_of_V1, Calculation_of_C2, Calculation_of_V2)
-
-def convert_volume_to_L(value, unit):
-    if unit == "L":
-        return value
-    if unit == "mL":
-        return value / 1000
-    if unit == "µL":
-        return value / 1_000_000
-    return value
-
-def convert_volume_from_L(value_L, unit):
-    if unit == "L":
-        return value_L
-    if unit == "mL":
-        return value_L * 1000
-    if unit == "µL":
-        return value_L * 1_000_000
-    return value_L
+from dilution_lib import (Calculation_of_C1, Calculation_of_V1, Calculation_of_C2, Calculation_of_V2, convert_volume_from_L, convert_volume_to_L)
 
 
 class DilutionCalculatorGUI:

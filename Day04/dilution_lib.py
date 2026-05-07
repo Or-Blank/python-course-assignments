@@ -24,3 +24,21 @@ def Calculation_of_V2(C1, V1, C2):
         print("Error: C2 cannot be zero, run again.")
         return None
     return (C1 * V1) / C2
+
+def convert_volume_to_L(value, unit):
+    if unit == "L":
+        return value
+    if unit == "mL":
+        return value / 1000
+    if unit == "µL":
+        return value / 1_000_000
+    return value
+
+def convert_volume_from_L(value_L, unit):
+    if unit == "L":
+        return value_L
+    if unit == "mL":
+        return value_L * 1000
+    if unit == "µL":
+        return value_L * 1_000_000
+    return value_L
