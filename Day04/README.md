@@ -1,5 +1,5 @@
 # Dilution Calculator #
-## The new features: ##
+## The new features - Dilutions_calculator_upgrade.py: ##
 * Changed the layout of the calculator
 * Add the option to choose the desired units.
 * When calculation for V1 is done, you will also get the specific amount to take from the stock and how much solvent to add.
