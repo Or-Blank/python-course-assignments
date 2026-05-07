@@ -9,7 +9,7 @@
 * Make sure 1. Dilutions_calculator_upgrade.py and 2. dilution_lib.py are in the same folder
   
 ## Review of other students: ##
-* A
+* https://github.com/atomicadi/Python-Course-Assignments/issues/1
 * B
 
 ## AI: ##
