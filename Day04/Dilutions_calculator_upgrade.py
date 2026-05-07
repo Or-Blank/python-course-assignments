@@ -3,14 +3,7 @@
 
 import customtkinter as ctk
 from tkinter import messagebox
-from dilution_lib import (
-    Calculation_of_C1,
-    Calculation_of_V1,
-    Calculation_of_C2,
-    Calculation_of_V2,
-)
-
-# ---------- Volume conversions only ----------
+from dilution_lib import (Calculation_of_C1, Calculation_of_V1, Calculation_of_C2, Calculation_of_V2)
 
 def convert_volume_to_L(value, unit):
     if unit == "L":
@@ -31,13 +24,12 @@ def convert_volume_from_L(value_L, unit):
     return value_L
 
 
-# ---------- GUI class ----------
-
 class DilutionCalculatorGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Dilution Calculator")
-        self.root.geometry("480x720")
+        self.root.geometry("520x640")
+        self.root.resizable(False, False)
 
         ctk.set_appearance_mode("light")
         ctk.set_default_color_theme("green")
@@ -98,26 +90,28 @@ class DilutionCalculatorGUI:
 
         instructions_text = (
             "Instructions:\n"
-            "1: Calculate C1 → Enter 1. V1, 2. C2, 3. V2\n"
-            "2: Calculate V1 → Enter 1. C1, 2. C2, 3. V2\n"
-            "3: Calculate C2 → Enter 1. C1, 2. V1, 3. V2\n"
-            "4: Calculate V2 → Enter 1. C1, 2. V1, 3. C2\n"
-            "\nImportant:\n"
-            "- All concentrations must use the same unit.\n"
-            "- All volumes must use the same unit.\n"
-            "- Units can be selected from the dropdown menus above.\n"
+            "• For C1: enter V1, C2, V2\n"
+            "• For V1: enter C1, C2, V2\n"
+            "• For C2: enter C1, V1, V2\n"
+            "• For V2: enter C1, V1, C2\n\n"
+            "Use the dropdowns to choose units.\n"
+            "All concentrations must use the same unit, and all volumes must use the same unit.\n"
         )
 
-        instructions = ctk.CTkTextbox(main_frame, width=400, height=200, corner_radius=10)
+        instructions = ctk.CTkTextbox(main_frame, width=440, height=170, corner_radius=10)
         instructions.insert("0.0", instructions_text)
         instructions.configure(state="disabled")
         instructions.pack(pady=10)
 
     def _create_entry(self, parent, label_text):
-        label = ctk.CTkLabel(parent, text=label_text, font=("Arial", 13))
-        label.pack(pady=3)
-        entry = ctk.CTkEntry(parent, width=220)
-        entry.pack()
+        row = ctk.CTkFrame(parent, fg_color="transparent")
+        row.pack(fill="x", padx=20, pady=6)
+
+        label = ctk.CTkLabel(row, text=label_text, width=140, anchor="w", font=("Arial", 13))
+        label.pack(side="left")
+
+        entry = ctk.CTkEntry(row, placeholder_text="Enter number")
+        entry.pack(side="left", fill="x", expand=True)
         return entry
 
     def calculate(self):
@@ -181,18 +175,12 @@ class DilutionCalculatorGUI:
             elif choice == "4":
                 C1_raw, V1_raw, C2_raw = val1, val2, val3
                 V1_L = convert_volume_to_L(V1_raw, vol_unit)
-
                 V2_L = Calculation_of_V2(C1_raw, V1_L, C2_raw)
                 V2_out = convert_volume_from_L(V2_L, vol_unit)
-
-                solvent_out = V2_out - V1_raw
-
                 self.result_label.configure(
                     text=(
                         f"V2 = {V2_out:.6g} {vol_unit}\n"
-                        f"Final volume required.\n\n"
-                        f"Add {solvent_out:.6g} {vol_unit} of solvent\n"
-                        f"to reach this final volume."
+                        f"Final volume required."
                     )
                 )
 
