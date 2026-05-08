@@ -10,7 +10,7 @@
   
 ## Review of other students: ##
 * https://github.com/atomicadi/Python-Course-Assignments/issues/1
-* B
+* https://github.com/alonalala/python-course-assignments/issues/1
 
 ## AI: ##
 I used for this week task the built in Copilot of VS and ChatGPT:
