@@ -77,7 +77,7 @@ print(clone_cluster_tables["PT7_Nm57_127_A1A2G1G2G3M"]) #Also here, if you want 
 
 print("\nNote: The above tables are being saved as images in your folder, please wait.")
 
-# Generate table images and excel file
+# Generate the tables images and excel file
 plot_table(global_cluster, "Cell Type Percentages of all Cells", "Day05/global_clusters.png")
 plot_table(clone_cluster_tables["PT7_Nm57_127_A1A2G1G2G3M"], "Cluster table for clone PT7_Nm57_127_A1A2G1G2G3M", "Day05/example_clone.png")
 clone_rank.to_excel("Day05/clone_rank.xlsx", index=True)
