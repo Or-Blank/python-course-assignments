@@ -21,13 +21,16 @@ Gap extension: −0.5
 
 * **Identity -** The fraction of positions in the alignment where the amino acids are identical (matches_in_same_position / alignment_length).
 
-* Example:
+* *Example:*
   
 Seq1: A L E K T A V
 
 Seq2: A L K A V
 
+With gaps:
+
 ALEKTAV
+
 AL--KAV
 
 **Similarity:**
