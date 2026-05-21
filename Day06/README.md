@@ -33,6 +33,7 @@ ALEKTAV
 
 AL--KAV
 
+
 **Similarity:**
 The sequences share 5 amino acids, so:
 
@@ -43,6 +44,7 @@ Gap opening: 1 gap block → −1.5
 Gap extension: 1 extra gap → −0.5
 
 **Similarity = 3.0**
+
 
 **Identity:**
 Aligned positions without gaps: A L K A V → 5
