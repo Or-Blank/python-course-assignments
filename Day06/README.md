@@ -33,12 +33,7 @@ The sequences share 5 amino acids, so:
 Matches: A, L, K, A, V → 5 × +1.0 = +5.0
 Gap opening: 1 gap block → −1.5
 Gap extension: 1 extra gap → −0.5
-
-+5.0  (matches)
-−1.5  (gap opening)
-−0.5  (gap extension)
----------------------
-**= 3.0 similarity**
+**Similarity = 3.0**
 
 **Identity:**
 Aligned positions without gaps: A L K A V → 5
