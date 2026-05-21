@@ -19,6 +19,7 @@ def fetch_epitopes_for_organism(organism_name: str, limit: int = 200):
         ("parent_source_antigen_source_org_names", f"eq.{{{organism_name}}}"),
     ]
 
+    matched_organism = None
     if organism_name.isdigit():
         taxon_value = f"eq.{{NCBITaxon:{organism_name}}}"
         candidate_filters.insert(0, ("source_organism_iris", taxon_value))
@@ -34,9 +35,14 @@ def fetch_epitopes_for_organism(organism_name: str, limit: int = 200):
             resp.raise_for_status()
             data = resp.json()
             if data:
+                if not matched_organism and data:
+                    matched_organism = data[0].get("source_organism_name", organism_name)
                 break
         except (requests.exceptions.RequestException, ValueError):
             continue
+    
+    if matched_organism and matched_organism != organism_name:
+        print(f"  Matched organism: {matched_organism}")
 
     epitopes = []
     for item in data:
