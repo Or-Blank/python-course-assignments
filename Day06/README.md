@@ -41,7 +41,9 @@ Gap extension: 1 extra gap → −0.5
 
 **Identity:**
 Aligned positions without gaps: A L K A V → 5
+
 Matches in those positions: 5
+
 **Identity = 5 / 5 = 1.0**
 
 ## Requiremment: ##
