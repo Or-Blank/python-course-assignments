@@ -3,7 +3,7 @@
 ## Epitopes: ##
 * Epitopes are short amino-acid sequences of an antigen that are the specific regions recognized by the immune system cells. 
 
-* Comparing epitopes is important because similar sequences can trigger cross‑reactive immune responses, where the body reacts to different organisms as if they were the same. It’s interesting because these similarities can help explain allergy patterns and potential risks across related species with diffrent or similar epitopes.
+* Comparing epitopes is important because similar sequences can trigger cross‑reactive immune responses, where the body reacts to different organisms as if they were the same. It’s interesting because these similarities can help explain allergy patterns and potential risks across related or distant species with diffrent or similar epitopes.
 
 ## IEDB: ##
 "The Immune Epitope Database (IEDB) is a freely available resource funded by NIAID. It catalogs experimental data on antibody and T cell epitopes studied in humans and other animal species in the context of infectious disease, allergy, autoimmunity and transplantation..." - *from the IEDB site*
