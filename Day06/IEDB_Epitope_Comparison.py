@@ -1,9 +1,15 @@
-#pip install biopython
 from Fetch_Epitopes import fetch_epitopes_for_organism
 from Organism_Selection import ORG1, ORG2
-from Bio import pairwise2
+from Bio.Align import PairwiseAligner
 from itertools import product
 from collections import Counter
+
+aligner = PairwiseAligner()
+aligner.mode = "global"
+aligner.match_score = 1
+aligner.mismatch_score = 0
+aligner.open_gap_score = 0
+aligner.extend_gap_score = 0
 
 
 def pick_top_n(epitopes, n=10):
@@ -11,8 +17,11 @@ def pick_top_n(epitopes, n=10):
 
 
 def align_and_metrics(seq1, seq2):
-    aln = pairwise2.align.globalxx(seq1, seq2, one_alignment_only=True)[0]
-    aligned1, aligned2, score, start, end = aln
+    alignment = aligner.align(seq1, seq2)[0]
+    formatted = [line for line in alignment.format().splitlines() if line.strip()]
+    aligned1 = formatted[0].split(maxsplit=3)[-1]
+    aligned2 = formatted[2].split(maxsplit=3)[-1]
+    score = alignment.score
     identity = sum(a == b for a, b in zip(aligned1, aligned2)) / len(aligned1)
     return float(score), float(identity)
 
@@ -51,6 +60,9 @@ def print_comparisons(title, comparisons, max_rows=20):
 
 
 def print_best_cross_pair(cross):
+    if not cross:
+        print("\nNo cross-organism comparison results are available.")
+        return
     best = max(cross, key=lambda c: (c["similarity"], c["identity"]))
     print("\n=== Most similar cross-organism pair ===")
     print(f"seq1:      {best['seq1']}")
@@ -73,6 +85,10 @@ def main():
 
     print_top_epitopes(ORG1, top1)
     print_top_epitopes(ORG2, top2)
+
+    if not top1 or not top2:
+        print("\nNo valid epitopes were found for one or both organisms. Comparison is skipped.")
+        return
 
     within1 = compare_group(top1)
     within2 = compare_group(top2)

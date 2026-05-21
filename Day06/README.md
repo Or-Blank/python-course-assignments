@@ -4,6 +4,7 @@
 
 ## Requiremment: ##
 * pip install biopython
+* pip install requests
 
 ## AI: ##
 I used for this task the built in Copilot of VS and ChatGPT: 

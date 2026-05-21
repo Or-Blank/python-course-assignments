@@ -10,29 +10,45 @@ def fetch_epitopes_for_organism(organism_name: str, limit: int = 200):
       sequence, assays, refs, score
     """
 
-    params = {
-        "parent_source_antigen_organism_name": f"eq.{organism_name}",
-        "select": "structure,tcell_ids,bcell_ids,mhc_ids,reference_ids",
-        "limit": limit,
-    }
-
     url = f"{IEDB_BASE_URL}/epitope_search"
-    resp = requests.get(url, params=params)
-    resp.raise_for_status()
-    data = resp.json()
+    select = "linear_sequence,tcell_ids,bcell_ids,reference_ids"
+
+    candidate_filters = [
+        ("source_organism_name", f"eq.{organism_name}"),
+        ("source_organism_names", f"eq.{{{organism_name}}}"),
+        ("parent_source_antigen_source_org_names", f"eq.{{{organism_name}}}"),
+    ]
+
+    if organism_name.isdigit():
+        taxon_value = f"eq.{{NCBITaxon:{organism_name}}}"
+        candidate_filters.insert(0, ("source_organism_iris", taxon_value))
+    elif organism_name.startswith("NCBITaxon:"):
+        taxon_value = f"eq.{{{organism_name}}}"
+        candidate_filters.insert(0, ("source_organism_iris", taxon_value))
+
+    data = []
+    for field, value in candidate_filters:
+        params = {field: value, "select": select, "limit": limit}
+        try:
+            resp = requests.get(url, params=params, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            if data:
+                break
+        except (requests.exceptions.RequestException, ValueError):
+            continue
 
     epitopes = []
     for item in data:
-        seq = item.get("structure")
+        seq = item.get("linear_sequence")
         if not seq:
             continue
 
         tcell = item.get("tcell_ids") or []
         bcell = item.get("bcell_ids") or []
-        mhc = item.get("mhc_ids") or []
         refs = item.get("reference_ids") or []
 
-        assay_count = len(tcell) + len(bcell) + len(mhc)
+        assay_count = len(tcell) + len(bcell)
         reference_count = len(refs)
         score = assay_count + reference_count
 
