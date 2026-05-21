@@ -5,6 +5,9 @@
 
 * Comparing epitopes is important because similar sequences can trigger cross‑reactive immune responses, where the body reacts to different organisms as if they were the same. It’s interesting because these similarities can help explain allergy patterns and potential risks across related species with diffrent or similar epitopes.
 
+## IEDB: ##
+"The Immune Epitope Database (IEDB) is a freely available resource funded by NIAID. It catalogs experimental data on antibody and T cell epitopes studied in humans and other animal species in the context of infectious disease, allergy, autoimmunity and transplantation..." - *from the IEDB site*
+
 ## The sequences comparison: ##
 * This project compares epitopes using global alignment from Biopython.
 
@@ -20,7 +23,7 @@ Gap = 0
 * Example:
 Seq1: KAEQVKASKEMGETLLRAVESYLLAHSDAYN
 Seq2: NTALFKAIEAYLIAN
-The sequences share 9 amino acids somewhere, so:
+The sequences share 9 amino acids, so:
 Similarity = 9
 But none of these matches occur in the same aligned position once gaps are inserted, so:
 Identity = 0.000
