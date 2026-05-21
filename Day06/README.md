@@ -30,9 +30,13 @@ AL--KAV
 
 **Similarity:**
 The sequences share 5 amino acids, so:
+
 Matches: A, L, K, A, V → 5 × +1.0 = +5.0
+
 Gap opening: 1 gap block → −1.5
+
 Gap extension: 1 extra gap → −0.5
+
 **Similarity = 3.0**
 
 **Identity:**
