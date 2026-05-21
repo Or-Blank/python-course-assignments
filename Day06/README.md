@@ -36,5 +36,6 @@ This happens because the scoring system I chose for this project, which allows u
 ## AI: ##
 I used for this task the built in Copilot of VS and ChatGPT: 
 * My main prompt in ChatGPT was: "I want to use the IEDB.org as a database for coding a python code for comparisons. I want a code as mush as using Biopython (as long as it neccecry and make sense to use), I want to get from the site the epitope of some food (from the same family like celery and carrot I chosed) and comapre the diffrent epitopes based on the sequencs by identity and similarity."
+* After that I used the Copilot in order to fix problems I had - the main issue was the the the organism selection via name did not work; so I used the AI help to change it from name to by ID number.
 
  
