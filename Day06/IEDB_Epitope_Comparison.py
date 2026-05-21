@@ -5,11 +5,13 @@ from itertools import product
 from collections import Counter
 
 aligner = PairwiseAligner()
-aligner.mode = "global"
-aligner.match_score = 1
-aligner.mismatch_score = 0
-aligner.open_gap_score = 0
-aligner.extend_gap_score = 0
+# Use local alignment to find the best matching subsequence between two peptides
+aligner.mode = "local"
+# Scoring: positive for match, negative for mismatch and gaps so gaps are penalized
+aligner.match_score = 1.0
+aligner.mismatch_score = -1.0
+aligner.open_gap_score = -1.5
+aligner.extend_gap_score = -0.5
 
 
 def pick_top_n(epitopes, n=10):
@@ -17,13 +19,29 @@ def pick_top_n(epitopes, n=10):
 
 
 def align_and_metrics(seq1, seq2):
-    alignment = aligner.align(seq1, seq2)[0]
+    aligns = list(aligner.align(seq1, seq2))
+    if not aligns:
+        return 0.0, 0.0
+
+    alignment = aligns[0]
+    # formatted representation contains three lines with aligned sequences at 0 and 2
     formatted = [line for line in alignment.format().splitlines() if line.strip()]
     aligned1 = formatted[0].split(maxsplit=3)[-1]
     aligned2 = formatted[2].split(maxsplit=3)[-1]
-    score = alignment.score
-    identity = sum(a == b for a, b in zip(aligned1, aligned2)) / len(aligned1)
-    return float(score), float(identity)
+    score = float(alignment.score)
+
+    # compute identity excluding positions with gaps in either sequence
+    matches = 0
+    aligned_positions = 0
+    for a, b in zip(aligned1, aligned2):
+        if a == '-' or b == '-':
+            continue
+        aligned_positions += 1
+        if a == b:
+            matches += 1
+
+    identity = float(matches / aligned_positions) if aligned_positions else 0.0
+    return float(score), identity
 
 
 def compare_group(epitopes):
