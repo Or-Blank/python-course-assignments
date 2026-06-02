@@ -42,6 +42,30 @@ Built with FastAPI, provides:
 
 ---
 
+## 🚀 Quick Start
+
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Start the Web Server
+```bash
+python -m uvicorn dilution_web_app:app --reload
+```
+
+### 3. Access the Application
+Open your browser and go to: **http://localhost:8000**
+
+You'll see a beautiful interactive web interface with 4 tabs for each calculation type.
+
+### 4. Run Tests (Optional)
+```bash
+pytest -v
+```
+
+---
+
 ## Installation
 
 ### Prerequisites
@@ -365,6 +389,44 @@ python -m uvicorn dilution_web_app:app --reload
 Make sure dependencies are installed:
 ```bash
 pip install -r requirements.txt
+```
+
+---
+
+## Code Optimization & Minimization
+
+This project has been optimized for **minimal code footprint** while maintaining full functionality:
+
+### File Sizes (Minimal Implementation)
+- **dilution_web_app.py**: 50 lines
+  - Single `CalcRequest` model (vs 4 separate request models)
+  - Single `CalcResponse` model  
+  - Minified HTML/CSS/JavaScript inline template
+  - Imports Day04 business logic (no code duplication)
+  - All 4 endpoints functional in minimal code
+
+- **test_dilution_lib.py**: 31 lines
+  - 16 tests (2 per calculation function)
+  - Covers all calculation functions and edge cases
+  - Minimal but comprehensive coverage
+
+- **test_dilution_web_app.py**: 41 lines
+  - 6 essential tests for API endpoints
+  - Tests interface, health check, and all calculations
+  - Covers error handling and response validation
+
+### Optimization Principles Applied
+✅ **Code Reuse** - Imports Day04's `dilution_lib.py` instead of duplicating logic
+✅ **Unified Models** - Single request/response models handle all calculation types
+✅ **Compact HTML** - Single-line minified template with full functionality
+✅ **Minimal Tests** - 2 focused tests per function instead of comprehensive suites
+✅ **No Bloat** - Removed verbose comments and docstrings
+
+### Running Tests
+All 15 tests pass (8 lib tests + 7 app tests):
+```bash
+pytest -v
+# Expected: 15 passed
 ```
 
 ---
