@@ -37,15 +37,18 @@ def root():
 
 <style>
     body {
-        font-family: 'Segoe UI', Arial;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        min-height: 100vh;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #333;
-    }
+    font-family: 'Segoe UI', Arial;
+    background: url("https://t3.ftcdn.net/jpg/06/10/02/08/360_F_610020822_QZC5TPWuo4dU8Yi9imEJMcEPNmCNk6hi.jpg")
+                no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
 
     .container {
         background: white;
@@ -155,7 +158,14 @@ def root():
 
 <body>
 <div class="container">
-    <h1>⚗️ Dilution Calculator</h1>
+
+<h1>
+    <img src="https://www.synthace.com/hubfs/dilution-calculator-illustration.svg"
+         style="height:200px; display:block; margin:0 auto 15px auto;">
+    Dilution Calculator
+</h1>
+
+
     <p class="note">Use µL for volume and mg/µL for concentration. Units must match.</p>
 
     <div class="tabs">
