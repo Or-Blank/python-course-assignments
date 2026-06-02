@@ -1,8 +1,4 @@
 # Dilution Calculator Web App (FastAPI) #
-
-This web application provides a REST API and web interface for the dilution calculator.
-It uses the same business logic from dilution_lib.py as the CLI and GUI applications.
-
 This project takes the: Dilution Calculator "business logic" from Day 04, and expand it into a web based application using FastAPI.
 
 ## The project includes: ##
