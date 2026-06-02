@@ -5,14 +5,14 @@ It uses the same business logic from dilution_lib.py as the CLI and GUI applicat
 
 This project takes the: Dilution Calculator "business logic" from Day 04, and expand it into a web based application using FastAPI.
 
-# The project includes:
+## The project includes: ##
 * **Web application** (`dilution_web_app.py`)
 * **The original, "business logic" file** (`dilution_lib.py`) - the core calculations of Day04, based on the **C₁ × V₁ = C₂ × V₂** formula.
 * **Test for the business logic** (`test_dilution_lib.py`)
 * **Test for the app** (`test_dilution_web_app.py`)
 * **The required installation** (`requirements.txt`)
 
-# How to run:
+## How to run: ##
 ### 1. Install dependencies
 ```bash
 pip install -r requirements.txt
