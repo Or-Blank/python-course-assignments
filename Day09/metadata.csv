@@ -1,0 +1,60 @@
+SampleID;host_disease;SampleName;DiseaseStatus;Sex;Age
+SRR29923448;CRC1;CT8;Colorectal cancer;male;76
+SRR29923449;CRC2;CA1;Colorectal cancer;female;71
+SRR29923450;Healthy1;H5;Healthy;male;58
+SRR29923451;Polype1;AP20;Adenomatous Polyps;female;69
+SRR29923452;Healthy2;H8;Healthy;male;63
+SRR29923453;Healthy3;H9;Healthy;male;76
+SRR29923454;Healthy4;H10;Healthy;female;79
+SRR29923455;Healthy5;H11;Healthy;female;79
+SRR29923456;Polype2;APA13;Adenomatous Polyps;male;54
+SRR29923457;Healthy6;H7;Healthy;male;58
+SRR29923458;Polype3;APA14;Adenomatous Polyps;female;69
+SRR29923459;Polype4;APA19;Adenomatous Polyps;male;54
+SRR29923460;Polype5;APA20;Adenomatous Polyps;female;69
+SRR29923461;Polype6;AP7;Adenomatous Polyps;male;58
+SRR29923462;Polype7;AP10;Adenomatous Polyps;female;79
+SRR29923463;Polype8;AP13;Adenomatous Polyps;male;54
+SRR29923464;Polype9;AP14;Adenomatous Polyps;female;69
+SRR29923465;Polype10;AP19;Adenomatous Polyps;male;54
+SRR29923466;Healthy7;H3;Healthy;female;49
+SRR29923467;CRC3;CA2;Colorectal cancer;female;75
+SRR29923468;CRC4;CA3;Colorectal cancer;female;49
+SRR29923469;CRC5;CA4;Colorectal cancer;male;62
+SRR29923470;CRC6;CA5;Colorectal cancer;male;58
+SRR29923471;CRC7;CA6;Colorectal cancer;male;76
+SRR29923472;CRC8;CA8;Colorectal cancer;male;76
+SRR29923473;CRC9;CA9;Colorectal cancer;male;63
+SRR29923474;CRC10;CA11;Colorectal cancer;female;79
+SRR29923475;CRC11;CA12;Colorectal cancer;male;65
+SRR29923476;Healthy8;H6;Healthy;male;76
+SRR29923477;Polype11;CT9;Adenomatous Polyps;male;63
+SRR29923478;Polype12;CT11;Adenomatous Polyps;female;79
+SRR29923479;Polype13;CT12;Adenomatous Polyps;male;65
+SRR29923480;Polype14;CT15;Adenomatous Polyps;female;71
+SRR29923481;Polype15;CT16;Adenomatous Polyps;female;75
+SRR29923482;Polype16;CT17;Adenomatous Polyps;female;42
+SRR29923483;Polype17;CT18;Adenomatous Polyps;male;65
+SRR29923484;Polype18;APA7;Adenomatous Polyps;male;58
+SRR29923485;Polype19;APA10;Adenomatous Polyps;female;79
+SRR29923486;Healthy9;H20;Healthy;female;69
+SRR29923487;CRC21;CA16;Colorectal cancer;female;75
+SRR29923488;CRC12;CA17;Colorectal cancer;female;42
+SRR29923489;CRC13;CA18;Colorectal cancer;male;65
+SRR29923490;CRC14;CT1;Colorectal cancer;female;71
+SRR29923491;CRC15;CT2;Colorectal cancer;female;75
+SRR29923492;CRC16;CT3;Colorectal cancer;female;49
+SRR29923493;CRC17;CT4;Colorectal cancer;male;62
+SRR29923494;CRC18;CT5;Colorectal cancer;male;58
+SRR29923495;CRC19;CT6;Colorectal cancer;male;76
+SRR29923496;CRC20;CA15;Colorectal cancer;female;71
+SRR29923497;Healthy10;H1;Healthy;female;71
+SRR29923498;Healthy11;H2;Healthy;female;75
+SRR29923499;Healthy12;H12;Healthy;male;65
+SRR29923500;Healthy13;H13;Healthy;male;54
+SRR29923501;Healthy14;H14;Healthy;female;69
+SRR29923502;Healthy15;H15;Healthy;female;71
+SRR29923503;Healthy16;H16;Healthy;female;75
+SRR29923504;Healthy17;H17;Healthy;female;42
+SRR29923505;Healthy18;H18;Healthy;male;65
+SRR29923506;Healthy19;H19;Healthy;male;54
