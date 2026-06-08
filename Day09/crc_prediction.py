@@ -2,16 +2,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score
-from pathlib import Path
-
-# Build paths relative to this script's location
-BASE_DIR = Path(__file__).parent
 
 # Load ASV abundance table
-asv = pd.read_excel(BASE_DIR / "seqtab_nochim_export.xlsx")
+asv = pd.read_excel("seqtab_nochim_export.xlsx")
 
 # Load metadata (labels)
-meta = pd.read_csv(BASE_DIR / "metadata.csv", sep=";")
+meta = pd.read_csv("metadata.csv", sep=";")
 
 # Merge on SampleID (adjust if column names differ)
 df = asv.merge(meta[["SampleID", "DiseaseStatus"]], on="SampleID")
