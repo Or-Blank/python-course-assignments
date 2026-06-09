@@ -14,7 +14,7 @@ This tool predict whether Adenomatous Polyp patients resemble Colorectal cancer 
 
 ## Method:
   - Use the source dataset - **CRC Gut Microbiome ML Data**: https://www.kaggle.com/datasets/aramelheni/crc-gut-microbiome-ml-data
-    Files needed:
+  - Files needed:
   * metadata.csv
   * taxa_species.xlsx
   * seqtab.xlsx
