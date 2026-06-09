@@ -16,24 +16,40 @@ from sklearn.metrics import accuracy_score
 taxa = pd.read_excel("taxa_species.xlsx").rename(columns={"Unnamed: 0": "sequence"})
  
 def best_name(row):
-    if pd.notna(row["Genus"]) and pd.notna(row["Species"]):
-        return f"{row['Genus']} {row['Species']}"
-    for col in ["Genus", "Family", "Order", "Class", "Phylum"]:
+    if pd.notna(row["Genus"]):
+        return f"{row['Genus']} sp."
+    for col in ["Family", "Order", "Class", "Phylum", "Genus"]:
         if pd.notna(row[col]):
             return str(row[col])
     return "Unknown"
  
 seq_to_name = dict(zip(taxa["sequence"], taxa.apply(best_name, axis=1)))
+def make_unique_columns(names):
+    seen, result = {}, []
+    for name in names:
+        count = seen.get(name, 0) + 1
+        seen[name] = count
+        result.append(name if count == 1 else f"{name}_{count}")
+    return result
  
 #Load & split by disease group
 asv  = pd.read_excel("seqtab.xlsx").rename(columns={"Unnamed: 0": "host_disease"})
 meta = pd.read_csv("metadata.csv", sep=";")
 df   = asv.merge(meta[["host_disease", "DiseaseStatus"]], on="host_disease")
+
+# Build unique column names once, shared by both train and polyp sets
+asv_cols     = [c for c in df.columns if c not in ["host_disease", "DiseaseStatus"]]
+raw_names    = [seq_to_name.get(c, "Unknown") for c in asv_cols]
+unique_names = make_unique_columns(raw_names)
+col_map      = dict(zip(asv_cols, unique_names))
  
 def to_X(d):
     X = d.drop(columns=["host_disease", "DiseaseStatus"]).select_dtypes(include=[float, int]).fillna(0)
-    X.columns = [seq_to_name.get(c, "Unknown") for c in X.columns]
+    mapped = [seq_to_name.get(c, "Unknown") for c in X.columns]
+    unique = make_unique_columns(mapped)
+    X.columns = unique
     return X
+
  
 df_train = df[df["DiseaseStatus"].isin(["Colorectal cancer", "Healthy"])].copy()
 df_poly  = df[df["DiseaseStatus"] == "Adenomatous Polyps"].copy()
@@ -56,43 +72,34 @@ pipe = Pipeline([
 pipe.fit(X_tr, y_tr)
  
 #Predict the polyp patients
-y_pred  = pipe.predict(X_po)
-y_proba = pipe.predict_proba(X_po)
+y_pred  = pipe.predict(X_po.values)
+y_proba = pipe.predict_proba(X_po.values)
 poly_names = df_poly["host_disease"].values
  
-#Ranking the top 20 bacteria with % in CRC and Healthy patients (for the feature importance plot)
+#Ranking the top 20 bacteria with % in CRC and Healthy patients 
 vt         = VarianceThreshold(0.0).fit(X_tr)
 X_vt       = vt.transform(X_tr)
 feat_names = np.array(X_tr.columns)[vt.get_support()]
+
+crc_pcts = []
+hlt_pcts = []
+bact_labels = []
+
+for i, bact in enumerate(feat_names):
+    col = X_vt[:, i]
+    crc_pct = (col[crc_mask] > 0).mean()
+    hlt_pct = (col[hlt_mask] > 0).mean()
+    crc_pcts.append(crc_pct)
+    hlt_pcts.append(hlt_pct)
+    bact_labels.append(bact)
  
-rf_direct  = RandomForestClassifier(500, class_weight="balanced", random_state=42, n_jobs=-1)
-rf_direct.fit(X_vt, y_tr)
-raw_imp    = pd.Series(rf_direct.feature_importances_, index=feat_names).nlargest(20).sort_values()
- 
-# AI addition - Aggregate duplicate names: sum importance, take max prevalence values
-bact_data = {}
-for bact, score in raw_imp.items():
-    idx = np.where(feat_names == bact)[0]
-    if not len(idx):
-        continue
-    col      = X_vt[:, idx[0]]
-    crc_pct  = (col[crc_mask] > 0).mean()
-    hlt_pct  = (col[hlt_mask] > 0).mean()
-    if bact not in bact_data:
-        bact_data[bact] = {"imp": 0, "crc_pct": crc_pct, "hlt_pct": hlt_pct}
-    bact_data[bact]["imp"] += score
- 
-# Sort by importance, keep top 20 unique
-top20 = sorted(bact_data.items(), key=lambda x: x[1]["imp"], reverse=True)[:20]
-top20 = sorted(top20, key=lambda x: x[1]["imp"])          # ascending for barh
- 
-bact_labels = [b for b, _ in top20]
-imp_vals    = [d["imp"]     for _, d in top20]
-crc_pcts    = [d["crc_pct"] for _, d in top20]
-hlt_pcts    = [d["hlt_pct"] for _, d in top20]
+idx = np.argsort(crc_pcts)[-20:]
+bact_labels = [bact_labels[i] for i in idx]
+crc_pcts    = [crc_pcts[i] for i in idx]
+hlt_pcts    = [hlt_pcts[i] for i in idx]
  
 #LOO-CV accuracy on training set (CRC vs Healthy)
-loo_acc = cross_val_score(pipe, X_tr, y_tr, cv=LeaveOneOut(), scoring="accuracy", n_jobs=-1).mean()
+loo_acc = cross_val_score(pipe, X_tr.values, y_tr, cv=LeaveOneOut(), scoring="accuracy", n_jobs=-1).mean()
  
 #Print the results
 print(f"\n{'='*65}")
@@ -176,8 +183,6 @@ ax4 = fig.add_axes([0.57, 0.10, 0.41, 0.84])
 y_pos2 = np.arange(len(bact_labels))
 bar_w  = 0.28
  
-bars_imp = ax4.barh(y_pos2 + bar_w,  imp_vals,  height=bar_w, color="#8e44ad",
-                    label="Feature Importance", edgecolor="white", linewidth=0.8)
 bars_crc = ax4.barh(y_pos2,          crc_pcts,  height=bar_w, color=CRC_COL,
                     label="% Present in CRC",   edgecolor="white", linewidth=0.8, alpha=0.85)
 bars_hlt = ax4.barh(y_pos2 - bar_w,  hlt_pcts,  height=bar_w, color=H_COL,
@@ -190,13 +195,13 @@ for i, (cp, hp) in enumerate(zip(crc_pcts, hlt_pcts)):
  
 ax4.set_yticks(y_pos2)
 ax4.set_yticklabels(bact_labels, fontsize=8.5)
-ax4.set_xlabel("Value (Importance or Prevalence %)", fontsize=10)
+ax4.set_xlabel("Prevalence (%)", fontsize=10)
 ax4.set_title("Top 20 Most Predictive Bacteria\n(importance + % of patients where bacterium is present)",
               fontsize=11)
 ax4.set_facecolor("#f0f0f0")
 ax4.spines[["top", "right"]].set_visible(False)
 ax4.legend(loc="lower right", fontsize=9)
-ax4.set_xlim(0, 1.15)
+ax4.set_xlim(0, 1.0)
  
 #Footer
 fig.text(0.28, 0.025,
