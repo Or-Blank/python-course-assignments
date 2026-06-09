@@ -31,7 +31,7 @@ Before running:
 ```bash
 pip install -r requirements.txt
 ```
-    2. Make sure all 3 files (2 xlsx and 1 csv) are in the same folde as the code
+2. Make sure all 3 files (2 xlsx and 1 csv) are in the same folde as the code
 
 Then run:
 ```bash
