@@ -13,7 +13,7 @@ from sklearn.model_selection import LeaveOneOut, cross_val_score
 from sklearn.metrics import accuracy_score
  
 #Taxa mapping file = get the common bacteria display names
-taxa = pd.read_excel("taxa_species_export.xlsx").rename(columns={"Unnamed: 0": "sequence"})
+taxa = pd.read_excel("taxa_species.xlsx").rename(columns={"Unnamed: 0": "sequence"})
  
 def best_name(row):
     if pd.notna(row["Genus"]) and pd.notna(row["Species"]):
@@ -26,7 +26,7 @@ def best_name(row):
 seq_to_name = dict(zip(taxa["sequence"], taxa.apply(best_name, axis=1)))
  
 #Load & split by disease group
-asv  = pd.read_excel("seqtab_nochim_export.xlsx").rename(columns={"Unnamed: 0": "host_disease"})
+asv  = pd.read_excel("seqtab.xlsx").rename(columns={"Unnamed: 0": "host_disease"})
 meta = pd.read_csv("metadata.csv", sep=";")
 df   = asv.merge(meta[["host_disease", "DiseaseStatus"]], on="host_disease")
  
