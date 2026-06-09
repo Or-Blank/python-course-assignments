@@ -27,7 +27,7 @@ This tool predict whether Adenomatous Polyp patients resemble Colorectal cancer 
 
 ## How to run:
 Before running:
-    1. Install dependencies using:
+1. Install dependencies using:
 ```bash
 pip install -r requirements.txt
 ```
