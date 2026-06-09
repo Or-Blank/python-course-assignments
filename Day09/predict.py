@@ -127,7 +127,7 @@ RISK_COL = "#e67e22"
 fig = plt.figure(figsize=(20, 11))
 fig.patch.set_facecolor("#f8f9fa")
 fig.suptitle("CRC Gut Microbiome — Polyp Patient Risk Prediction",
-             fontsize=16, fontweight="bold", y=0.99)
+             fontsize=18, fontweight="bold", y=1.04)
  
 #Panel A: Training composition pie
 ax1 = fig.add_axes([0.03, 0.54, 0.20, 0.38])
@@ -140,17 +140,25 @@ wedges, _, autotexts = ax1.pie(
     wedgeprops={"edgecolor": "white", "linewidth": 2})
 for at in autotexts:
     at.set(fontsize=12, fontweight="bold", color="white")
-ax1.set_title("Training Set\n(known labels)", fontsize=11, pad=10)
+ax1.set_title("Training Set\n(known data)", fontsize=11, pad=10)
  
 #Panel B: Polyp prediction pie 
 ax2 = fig.add_axes([0.03, 0.08, 0.20, 0.38])
 ax2.pie(
     [n_high, n_low],
-    labels=[f"! High Risk\n(n={n_high})", f"OK Low Risk\n(n={n_low})"],
+    labels=[f"High Risk\n(n={n_high})", ""],
     colors=[CRC_COL, H_COL], autopct="%1.0f%%", startangle=90,
     textprops={"fontsize": 11}, pctdistance=0.62,
     wedgeprops={"edgecolor": "white", "linewidth": 2})
+ax2.text(
+    0.25,-1.25,                     
+    f"Low Risk\n(n={n_low})",
+    fontsize=11,
+    ha="center",
+    va="center",
+)
 ax2.set_title("Polyp Patients\n(predicted risk)", fontsize=11, pad=10)
+
  
 #Panel C: Per-polyp prediction bars
 ax3 = fig.add_axes([0.28, 0.10, 0.24, 0.84])
@@ -161,7 +169,7 @@ y_pos      = np.arange(len(poly_names))
 ax3.barh(y_pos, conf_vals, color=bar_colors, edgecolor="white", linewidth=1.5, height=0.65)
  
 for i, (pred, conf) in enumerate(zip(y_pred, conf_vals)):
-    label = "! CRC-like" if pred == 0 else "OK Healthy-like"
+    label = "CRC-like" if pred == 0 else "Healthy-like"
     ax3.text(2, i, f"  {label}", va="center", fontsize=8.5,
              color="white", fontweight="bold")
     ax3.text(conf + 1.5, i, f"{conf:.0f}%", va="center", fontsize=8.5, color="#333")
@@ -174,8 +182,8 @@ ax3.set_xlabel("Prediction Confidence (%)", fontsize=10)
 ax3.set_title("Per-Patient Prediction\n(confidence %)", fontsize=11)
 ax3.set_facecolor("#f0f0f0")
 ax3.spines[["top", "right"]].set_visible(False)
-ax3.legend(handles=[mpatches.Patch(color=CRC_COL, label="! High Risk (CRC-like)"),
-                    mpatches.Patch(color=H_COL,   label="OK Low Risk (Healthy-like)")],
+ax3.legend(handles=[mpatches.Patch(color=CRC_COL, label="High Risk (CRC-like)"),
+                    mpatches.Patch(color=H_COL,   label="Low Risk (Healthy-like)")],
            loc="lower right", fontsize=9)
  
 #Panel D: Top-20 bacteria with CRC% and Healthy% 
@@ -196,7 +204,7 @@ for i, (cp, hp) in enumerate(zip(crc_pcts, hlt_pcts)):
 ax4.set_yticks(y_pos2)
 ax4.set_yticklabels(bact_labels, fontsize=8.5)
 ax4.set_xlabel("Prevalence (%)", fontsize=10)
-ax4.set_title("Top 20 Most Predictive Bacteria\n(importance + % of patients where bacterium is present)",
+ax4.set_title("Top 20 Most Predictive Bacteria\n(% of patients where bacterium is present)",
               fontsize=11)
 ax4.set_facecolor("#f0f0f0")
 ax4.spines[["top", "right"]].set_visible(False)
