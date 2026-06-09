@@ -18,7 +18,7 @@ This tool predict whether Adenomatous Polyp patients resemble Colorectal cancer 
   * *metadata.csv*
   * *taxa_species.xlsx*
   * *seqtab.xlsx*
-  * *Note:* The files are a bit diffrent than in the source, use the ones I uploaded in the repo.
+  * *Note:* The files are a bit diffrent than in the source, use the ones I uploaded in the repo and download them to the same folder as the code.
     
   - Train on the  CRC + Healthy patients
   - Predict on Adenomatous Polyp patients (n=19, genuinely unknown outcome).
