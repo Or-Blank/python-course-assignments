@@ -27,11 +27,17 @@ This tool predict whether Adenomatous Polyp patients resemble Colorectal cancer 
 ## How to run:
 Before running:
     1. Install dependencies using:
-        pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
     2. Make sure all 3 files (2 xlsx and 1 csv) are in the same folde as the code
 
 Then run:
-        python prediction.py
+```bash
+python crc_prediction.py
+```
+
+
 
 ## Output:
 The pipeline produces a full risk‑prediction report for polyp patients.
@@ -55,4 +61,9 @@ Prompts used:
 
 ## Parpers:
 https://my.clevelandclinic.org/health/diseases/15370-colon-polyps
+
+
+
+
+
  
