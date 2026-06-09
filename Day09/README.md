@@ -14,11 +14,12 @@ This tool predict whether Adenomatous Polyp patients resemble Colorectal cancer 
 
 ## Method:
   - Use the source dataset - **CRC Gut Microbiome ML Data**: https://www.kaggle.com/datasets/aramelheni/crc-gut-microbiome-ml-data
-  - Files needed:
+    Files needed:
   * metadata.csv
   * taxa_species.xlsx
   * seqtab.xlsx
-  * *Note:* The files are a bit diffrent than in the source, use the ones I uploaded in the repo. 
+  * *Note:* The files are a bit diffrent than in the source, use the ones I uploaded in the repo.
+    
   - Train on the  CRC + Healthy patients
   - Predict on Adenomatous Polyp patients (n=19, genuinely unknown outcome).
   * Each polyp patient is classified as resembling CRC (high risk) or Healthy (low risk).
